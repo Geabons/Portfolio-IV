@@ -1,7 +1,9 @@
-import { ANSI } from "./utils/ANSI.mjs";
 
 
-const outputGraphics = `
+class SplashScreen {
+    constructor() {
+        this.frames = [
+            `
  ██▓    ▄▄▄       ▄▄▄▄ ▓██   ██▓ ██▀███   ██▓ ███▄    █ ▄▄▄█████▓ ██░ ██
 ▓██▒   ▒████▄    ▓█████▄▒██  ██▒▓██ ▒ ██▒▓██▒ ██ ▀█   █ ▓  ██▒ ▓▒▓██░ ██▒
 ▒██░   ▒██  ▀█▄  ▒██▒ ▄██▒██ ██░▓██ ░▄█ ▒▒██▒▓██  ▀█ ██▒▒ ▓██░ ▒░▒██▀▀██░
@@ -12,29 +14,16 @@ const outputGraphics = `
   ░ ░    ░   ▒    ░    ░▒ ▒ ░░    ░░   ░  ▒ ░   ░   ░ ░   ░       ░  ░░ ░
     ░  ░     ░  ░ ░     ░ ░        ░      ░           ░           ░  ░  ░
                        ░░ ░
-`;
+`,
 
-
-
-class SplashScreen {
-
-    constructor() {
-
-    }
-
-    update() {
-
+        ];
+        this.currentFrame = 0;
     }
 
     draw() {
-        if (this.dirty) {
-            this.dirty = false;
-            console.log(ANSI.CLEAR_SCREEN, ANSI.CURSOR_HOME);
-
-        }
+        console.clear();
+        console.log(this.frames[this.currentFrame]);
     }
-
-
 }
 
 export default SplashScreen;
